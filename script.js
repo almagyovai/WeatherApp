@@ -47,14 +47,9 @@ fetch(weatherApiUrl)
             forecastDay.classList.add('forecast-day');
             
             forecastDay.innerHTML = `
-                                        <h3>5-Day Forecast</h3>
-                <div id="forecast-container">
-
-
                 <h4>${date}</h4>
                 <p>${temp}°C</p>
                 <p>${desc}</p>
-</div>
             `;
             
             forecastContainer.appendChild(forecastDay);
