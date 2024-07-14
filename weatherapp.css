@@ -8,7 +8,7 @@ body {
     margin: 0;
 }
 
-.container {
+#weather-container {
     text-align: center;
     background: #fff;
     padding: 20px;
@@ -31,4 +31,30 @@ button {
 
 button:hover {
     background: #0056b3;
+}
+
+#forecast {
+    margin-top: 20px;
+}
+
+#forecast-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.forecast-day {
+    background: #e0e0e0;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    width: 100px;
+}
+
+.forecast-day h5 {
+    margin: 0;
+}
+
+.forecast-day p {
+    margin: 5px 0;
 }
