@@ -58,3 +58,18 @@ button:hover {
 .forecast-day p {
     margin: 5px 0;
 }
+
+
+@media only screen and (max-width: 600px) {
+    .container{
+        padding: 300px 0 30px 0;
+    }
+    
+    #forecast-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+    }
+}
