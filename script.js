@@ -1,16 +1,8 @@
+const apiKey = 'e5eb0575dd9189d8a5f1a35946d8ef58';
 
-document.getElementById('getWeather').addEventListener('click', function() {
-    let city = document.getElementById('city').value;
-    if (!city) {
-        alert('Please enter a city name');
-        return;
-    }
-    
-    const apiKey = 'e5eb0575dd9189d8a5f1a35946d8ef58';
+function fetchWeatherData(city) {
     const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     const forecastApiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
-    const iconUrl = `https://openweathermap.org/img/wn/${weatherIcon}.png`;
-
 
     fetch(weatherApiUrl)
     .then(response => {
@@ -32,7 +24,6 @@ document.getElementById('getWeather').addEventListener('click', function() {
 
         const iconUrl = `https://openweathermap.org/img/wn/${weatherIcon}.png`;
 
-        // Update the src attribute of the weatherIcon <img> tag
         document.getElementById('weatherIcon').src = iconUrl;
 
         return fetch(forecastApiUrl);
@@ -42,16 +33,14 @@ document.getElementById('getWeather').addEventListener('click', function() {
         const forecastContainer = document.getElementById('forecast-container');
         forecastContainer.innerHTML = '';
 
-        // Filter the forecast data to get one entry per day at noon (12:00)
         const forecastList = forecastData.list.filter(entry => entry.dt_txt.includes("12:00:00"));
 
         forecastList.forEach(day => {
             const date = new Date(day.dt_txt).toLocaleDateString();
             const temp = day.main.temp;
             const desc = day.weather[0].description;
-            const weatherIcon = day.weather[0].icon; // Get weather icon code
+            const weatherIcon = day.weather[0].icon; 
 
-            // Map weather icon codes to icon URLs (adjust as per OpenWeatherMap API documentation)
             const iconUrl = `https://openweathermap.org/img/wn/${weatherIcon}.png`;
 
             const forecastDay = document.createElement('div');
@@ -70,4 +59,18 @@ document.getElementById('getWeather').addEventListener('click', function() {
     .catch(error => {
         alert(error.message);
     });
+}
+
+document.getElementById('getWeather').addEventListener('click', function() {
+    let city = document.getElementById('city').value;
+    if (!city) {
+        alert('Please enter a city name');
+        return;
+    }
+    fetchWeatherData(city);
 });
+
+window.onload = function() {
+    const defaultCity = 'Timişoara'; 
+    fetchWeatherData(defaultCity);
+}
