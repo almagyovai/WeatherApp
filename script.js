@@ -18,11 +18,11 @@ function fetchWeatherData(city) {
             let description = data.weather[0].description;
             let weatherIcon = data.weather[0].icon;
 
-            document.getElementById('cityName').innerText = `City: ${cityName}`;
+            document.getElementById('cityName').innerText = `Location: ${cityName}`;
             document.getElementById('temperature').innerText = `Temperature: ${temperature}°C`;
             document.getElementById('description').innerText = `Description: ${description}`;
 
-            const iconUrl = `https://openweathermap.org/img/wn/${weatherIcon}.png`;
+            const iconUrl = `https://openweathermap.org/img/wn/${weatherIcon}@4x.png`;
 
             document.getElementById('weatherIcon').src = iconUrl;
 
@@ -45,7 +45,7 @@ function fetchWeatherData(city) {
                 const desc = day.weather[0].description;
                 const weatherIcon = day.weather[0].icon;
 
-                const iconUrl = `https://openweathermap.org/img/wn/${weatherIcon}.png`;
+                const iconUrl = `https://openweathermap.org/img/wn/${weatherIcon}@4x.png`;
 
                 const forecastDay = document.createElement('div');
                 forecastDay.classList.add('forecast-day');
@@ -53,9 +53,9 @@ function fetchWeatherData(city) {
                 forecastDay.innerHTML = `
                     <h4>${dayOfWeek}</h4>
                     <h4>${formattedDate}</h4>
-                    <img src="${iconUrl}" alt="Weather Icon">
-                    <p>${temp}°C</p>
-                    <p>${desc}</p>
+                    <img src="${iconUrl}" class="forecast-weather" alt="Weather Icon">
+                    <p class="temp"><span class="Poppins-font">${temp}°C</span></p>
+                    <p class="desc">${desc}</p>
                 `;
                 
                 forecastContainer.appendChild(forecastDay);
@@ -86,21 +86,19 @@ function setBackground(description) {
             break;
         case 'shower rain':
         case 'rain':
-            gradient = '#778899';
+            gradient = 'linear-gradient(to bottom, #9bc1e4, #4a6fa5)';
             break;
         case 'thunderstorm':
-            gradient = '#778899';
+            gradient = 'linear-gradient(to bottom, #4a6fa5, #1f2c37)';
             break;
         case 'snow':
-            gradient = '#FFFFFF';
+            gradient = 'linear-gradient(to bottom, #f5f5f5, #b3e5fc)';
             break;
         case 'mist':
-            gradient = 'linear-gradient(120deg, #EBF4F5, #B5C6E0)';
+            gradient = 'linear-gradient(to bottom, #f3e5f5, #e1bee7)';
             break;
-        default:
-            gradient = '#F0E68C';
-            break;
-    }
+            }
+            
     document.body.style.background = gradient;
 }
 
@@ -117,20 +115,6 @@ window.onload = function() {
     const defaultCity = 'Timişoara'; 
     fetchWeatherData(defaultCity);
 }
-
-const button = document.getElementById('getWeather');
-
-button.addEventListener('mousedown', function() {
-    this.style.transform = 'scale(1.2)'; // Grow on mouse down
-});
-
-button.addEventListener('mouseup', function() {
-    this.style.transform = 'scale(1.25)'; // Return to original size on mouse up
-});
-
-button.addEventListener('mouseleave', function() {
-    this.style.transform = 'scale(1)'; // Ensure it returns to original size if mouse leaves the button
-});
 
 document.addEventListener('DOMContentLoaded', function() {
     const input = document.getElementById('city');

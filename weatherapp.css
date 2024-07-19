@@ -1,28 +1,30 @@
 body {
-    font-family: Arial, sans-serif;
-    transition: background-color 0.5s ease;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
     margin: 0;
+    padding: 0;
     overflow-x: hidden;
+}
+
+.container{
+    padding: 30px 0 0 0;
 }
 
 #weather-container {
     text-align: center;
     background: transparent;
-    margin-top: 20px;
-    padding: 20px 220px 90px 220px;
+    margin-top: 10px;
+    padding: 0px 0px 58px 0px;
     border-radius: 10px;
 }
 
 input{
-    padding: 12px 60px 12px 20px;
-    margin: 5px;
+    padding: 10px;
+    margin-right: 5px;
+    margin-left: -5px;
     background: linear-gradient(120deg, rgb(255, 255, 255), #ffffff20,  rgba(206, 205, 205, 0.3), rgb(255, 255, 255));
     border-radius: 12px;
     border: 1px transparent;
@@ -43,19 +45,49 @@ input:active{
     background: linear-gradient(120deg, rgb(255, 255, 255), #ffffff20,  rgba(206, 205, 205, 0.3), rgb(255, 255, 255)) !important;
 }
 
+div.search-bar{
+    display: flex;
+    justify-content: start;
+}
+
+div.current-weather{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 #city{
-    font-family: 'DM Sans';
-    font-size: 13px;
+    font-family: inherit;
+    font-size: 15px;
+    letter-spacing: 0.75px;
+    color: #000;
     text-align: left;
 }
 
+h2{
+    font-size: 30px;
+    margin-bottom: -20px;
+}
+
+#temperature{
+    font-size: 20px;
+    margin-top: -30px;
+}
+
+#description{
+    font-size: 18px;
+    margin-top: -18px;
+}
+
 button {
-    position: absolute;
-    top: 82px;
     margin: 0 0 0 5px;
     background: linear-gradient(120deg, rgb(255, 255, 255), #ffffff20, rgb(255, 255, 255));
     border-radius: 12px;
-    padding: 5px;
+    padding: 8px 10px 8px 10px;
     border: none;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
@@ -68,14 +100,31 @@ button {
 }
 
 #forecast {
-    margin-top: 20px;
+    margin-top: -20px;
 }
 
 #forecast-container {
     display: flex;
     justify-content: space-between;
     gap: 25px;
-    margin-top: 40px;
+    margin-top: 39px;
+}
+
+h4 + h4{
+    margin-top: -22px;
+}
+
+span.Poppins-font{
+    font-family: 'Poppins';
+    font-weight: 600;
+}
+
+p.temp + p{
+    margin-top: 0px;
+}
+
+p.desc{
+    line-height: 1;
 }
 
 .forecast-day {
@@ -83,11 +132,11 @@ button {
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     box-shadow: 6px 6px 10px 0px rgba(156, 153, 159, 0.5);   
-    padding: 5px 10px 30px 10px;
+    padding: 5px 30px 70px 30px;
     border-radius: 12px;
     text-align: center;
     width: 130px;
-    height: 200px;
+    height: 220px;
 }
 
 .forecast-day p {
@@ -95,20 +144,698 @@ button {
 }
 
 .current-weather{
-    width: 70px;
+    width: 180px;
+    display: block;
+    margin: 0 auto;}
+
+.forecast-weather{
+    width: 100px;
 }
 
 
-@media only screen and (max-width: 600px) {
-    .container{
-        padding: 300px 0 30px 0;
+/* Tablets (portrait and landscape) */
+@media (width: 1280px) {
+    body {
+        flex-direction: column;
+        justify-content: center;
     }
-    
+
+    .container {
+        padding: 50px 0;
+    }
+
+    #weather-container {
+        padding: 0px 0px 20px 0px;
+        margin-top: 45px;
+    }
+
+    div.search-bar{
+        display: flex;
+        justify-content: flex-start;
+    }    
+
+    input {
+        width: 100%;
+        margin: 0 8px 0 55px;
+    }
+
+    #city{
+        font-size: 18px;
+    }    
+
+    h2 {
+        font-size: 33px;
+        margin-bottom: -10px;
+    }
+
+    #temperature {
+        font-size: 24px;
+        margin-top: -10px;
+    }
+
+    #description {
+        font-size: 24px;
+        margin-top: -15px;
+    }
+
+    button {
+        padding: 5px 7px;
+    }
+
     #forecast-container {
         display: flex;
+        flex-direction: row;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+        align-items: stretch;       
+        gap: 25px;
+        padding: 18px 10px 20px 10px;
+        }
+
+    .forecast-day {
+        width: 255px;
+        height: 320px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+   h4{
+    font-size: 20px;
+   }
+
+   .temp,
+   .desc{
+       font-size: 18px;
+   }
+
+    .forecast-weather {
+        width: 100px;
+    }
+
+}
+
+@media (width: 1024px) {
+    body {
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: center;
+    }
+
+    .container {
+        padding: 96px 0;
+    }
+
+    #weather-container {
+        padding: 0px 0px 20px 0px;
+        margin-top: 45px;
+    }
+
+    div.search-bar{
+        display: flex;
+        justify-content: flex-start;
+    }    
+
+    input {
+        width: 100%;
+        margin: 0 8px 0 55px;
+    }
+
+    #city{
+        font-size: 18px;
+    }    
+
+    h2 {
+        font-size: 33px;
+        margin-bottom: -10px;
+    }
+
+    #temperature {
+        font-size: 24px;
+        margin-top: -10px;
+    }
+
+    #description {
+        font-size: 24px;
+        margin-top: -15px;
+    }
+
+    button {
+        padding: 5px 7px;
+    }
+
+    #forecast-container {
+        display: flex;
+        flex-direction: row;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+        align-items: stretch;       
+        gap: 25px;
+        padding: 18px 10px 20px 10px;
+        }
+
+    .forecast-day {
+        width: 255px;
+        height: 320px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+   h4{
+    font-size: 20px;
+   }
+
+   .temp,
+   .desc{
+       font-size: 18px;
+   }
+
+    .forecast-weather {
+        width: 100px;
+    }
+
+}
+
+@media (width: 912px) {
+    body {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .container {
+        padding: 103px 0;
+    }
+
+    #weather-container {
+        padding: 0px 0px 20px 0px;
+        margin-top: 40px;
+    }
+
+    div.search-bar{
+        display: flex;
+        justify-content: flex-start;
+    }    
+
+    input {
+        width: 100%;
+        margin: 0 8px 0 55px;
+    }
+
+    #city{
+        font-size: 17px;
+    }    
+
+    h2 {
+        font-size: 32px;
+        margin-bottom: -10px;
+    }
+
+    #temperature {
+        font-size: 21px;
+        margin-top: -10px;
+    }
+
+    #description {
+        font-size: 21px;
+        margin-top: -15px;
+    }
+
+    button {
+        padding: 5px 7px;
+    }
+
+    #forecast-container {
+        display: flex;
+        flex-direction: row;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+        align-items: stretch;       
+        gap: 25px;
+        padding: 15px 10px 18px 10px;
+        margin-top: 50px;
+        }
+
+    .forecast-day {
+        width: 225px;
+        height: 323px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    h4{
+        font-size: 20px;
+       }   
+       
+    .temp,
+    .desc{
+        font-size: 20px;
+    }
+
+    .forecast-weather {
+        width: 100px;
+    }
+
+}
+
+@media (width: 932px) {
+    body {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .container {
+        padding: 30px 0;
+    }
+
+    #weather-container {
+        padding: 0px 0px 20px 0px;
+        margin-top: 20px;
+    }
+
+    div.search-bar{
+        display: flex;
+        justify-content: flex-start;
+    }    
+
+    input {
+        width: 100%;
+        margin: 0 8px 0 55px;
+    }
+
+    #city{
+        font-size: 13px;
+    }    
+
+    h2 {
+        font-size: 25px;
+        margin-bottom: -10px;
+    }
+
+    #temperature {
+        font-size: 17px;
+        margin-top: -10px;
+    }
+
+    #description {
+        font-size: 15px;
+        margin-top: -15px;
+    }
+
+    button {
+        padding: 5px 7px;
+    }
+
+    #forecast-container {
+        display: flex;
+        flex-direction: row;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+        align-items: stretch;       
+        gap: 25px;
+        padding: 15px 10px 18px 10px;
+        }
+
+    .forecast-day {
+        width: 225px;
+        height: 280px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    h4{
+        font-size: 18px;
+       }   
+       
+    .temp,
+    .desc{
+        font-size: 18px;
+    }
+
+    .forecast-weather {
+        width: 80px;
+    }
+
+}
+
+@media (width: 853px) {
+    body {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .container {
+        padding: 85px 0;
+    }
+
+    #weather-container {
+        padding: 0px 0px 20px 0px;
+        margin-top: 20px;
+    }
+
+    div.search-bar{
+        display: flex;
+        justify-content: flex-start;
+    }    
+
+    input {
+        width: 100%;
+        margin: 0 8px 0 40px;
+    }
+
+    #city{
+        font-size: 16px;
+    }    
+
+    h2 {
+        font-size: 30px;
+        margin-bottom: -10px;
+    }
+
+    #temperature {
+        font-size: 20px;
+        margin-top: -10px;
+    }
+
+    #description {
+        font-size: 20px;
+        margin-top: -15px;
+    }
+
+    button {
+        padding: 5px 7px;
+    }
+
+    #forecast-container {
+        display: flex;
+        flex-direction: row;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+        align-items: stretch;       
+        gap: 25px;
+        padding: 15px 10px 18px 10px;
+        margin-top: 50px;
+        }
+
+    .forecast-day {
+        width: 225px;
+        height: 310px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    h4{
+        font-size: 18px;
+       }   
+       
+    .temp,
+    .desc{
+        font-size: 18px;
+    }
+
+    .forecast-weather {
+        width: 100px;
+    }
+
+}
+
+@media (width: 820px) {
+    body {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .container {
+        padding: 41px 0;
+    }
+
+    #weather-container {
+        padding: 0px 0px 20px 0px;
+        margin-top: 20px;
+    }
+
+    div.search-bar{
+        display: flex;
+        justify-content: flex-start;
+    }    
+
+    input {
+        width: 100%;
+        margin: 0 8px 0 40px;
+    }
+
+    #city{
+        font-size: 16px;
+    }    
+
+    h2 {
+        font-size: 30px;
+        margin-bottom: -10px;
+    }
+
+    #temperature {
+        font-size: 20px;
+        margin-top: -10px;
+    }
+
+    #description {
+        font-size: 20px;
+        margin-top: -15px;
+    }
+
+    button {
+        padding: 5px 7px;
+    }
+
+    #forecast-container {
+        display: flex;
+        flex-direction: row;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+        align-items: stretch;       
+        gap: 25px;
+        padding: 15px 10px 18px 10px;
+        }
+
+    .forecast-day {
+        width: 225px;
+        height: 310px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    h4{
+        font-size: 18px;
+       }   
+       
+    .temp,
+    .desc{
+        font-size: 18px;
+    }
+
+    .forecast-weather {
+        width: 100px;
+    }
+
+}
+
+@media (width: 768px) {
+    body {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .container {
+        padding: 30px 0;
+    }
+
+    #weather-container {
+        padding: 0px 0px 20px 0px;
+        margin-top: 20px;
+    }
+
+    div.search-bar{
+        display: flex;
+        justify-content: flex-start;
+    }    
+
+    input {
+        width: 100%;
+        margin: 0 8px 0 55px;
+    }
+
+    #city{
+        font-size: 13px;
+    }    
+
+    h2 {
+        font-size: 25px;
+        margin-bottom: -10px;
+    }
+
+    #temperature {
+        font-size: 17px;
+        margin-top: -10px;
+    }
+
+    #description {
+        font-size: 15px;
+        margin-top: -15px;
+    }
+
+    button {
+        padding: 5px 7px;
+    }
+
+    #forecast-container {
+        display: flex;
+        flex-direction: row;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+        align-items: stretch;       
+        gap: 25px;
+        padding: 15px 10px 18px 10px;
+        }
+
+    .forecast-day {
+        width: 225px;
+        height: 280px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    .forecast-weather {
+        width: 80px;
+    }
+
+}
+
+@media (width: 540px) {
+    .container {
+        padding: 30px 0;
+    }
+
+    #weather-container {
+        padding: 0px 0px 20px 0px;
+        margin-top: 20px;
+    }
+
+    div.search-bar{
+        display: flex;
+        justify-content: flex-start;
+    }    
+
+    input {
+        width: 100%;
+        margin: 0 8px 0 35px;
+    }
+
+    #city{
+        font-size: 13px;
+    }    
+
+    h2 {
+        font-size: 25px;
+        margin-bottom: -10px;
+    }
+
+    #temperature {
+        font-size: 17px;
+        margin-top: -10px;
+    }
+
+    #description {
+        font-size: 15px;
+        margin-top: -15px;
+    }
+
+    button {
+        padding: 5px 7px;
+    }
+
+    #forecast-container {
+        display: flex;
+        flex-direction: row;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+        align-items: stretch;       
+        gap: 25px;
+        padding: 15px 10px 18px 10px;
+        }
+
+    .forecast-day {
+        width: 225px;
+        height: 280px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    .forecast-weather {
+        width: 80px;
+    }
+
+}
+
+/* Mobile devices (portrait) */
+@media (max-width: 480px) {
+    body {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .container {
+        padding: 30px 0;
+    }
+
+    #weather-container {
+        padding: 0px 0px 20px 0px;
+        margin-top: 20px;
+    }
+
+    div.search-bar{
+        display: flex;
+        justify-content: center;
+    }    
+
+    input {
+        min-width: 100%;
+        margin: 0 8px 0 0;
+    }
+
+    #city{
+        font-size: 13px;
+    }    
+
+    h2 {
+        font-size: 25px;
+        margin-bottom: -10px;
+    }
+
+    #temperature {
+        font-size: 17px;
+        margin-top: -10px;
+    }
+
+    #description {
+        font-size: 15px;
+        margin-top: -15px;
+    }
+
+    button {
+        padding: 5px 7px;
+    }
+
+    #forecast-container {
+        flex-direction: column;
         align-items: center;
-        gap: 10px;
+        gap: 25px;
+    }
+
+    .forecast-day {
+        width: 195px;
+        height: 240px;
+        padding: 5px 15px 40px 15px;
+    }
+
+    .forecast-weather {
+        width: 80px;
     }
 }
+
