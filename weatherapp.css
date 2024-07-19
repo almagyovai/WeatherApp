@@ -1,36 +1,70 @@
 body {
     font-family: Arial, sans-serif;
-    background: #f0f0f0;
+    transition: background-color 0.5s ease;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
+    overflow-x: hidden;
 }
 
 #weather-container {
     text-align: center;
-    background: #fff;
-    padding: 20px;
+    background: transparent;
+    margin-top: 20px;
+    padding: 20px 220px 90px 220px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-input, button {
-    padding: 10px;
+input{
+    padding: 12px 60px 12px 20px;
     margin: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    background: linear-gradient(120deg, rgb(255, 255, 255), #ffffff20,  rgba(206, 205, 205, 0.3), rgb(255, 255, 255));
+    border-radius: 12px;
+    border: 1px transparent;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 6px 6px 8px 0px rgba(156, 153, 159, 0.5);
+    min-width: 200px;
+}
+
+input:focus
+{
+    border: none;
+    outline: transparent;
+    background: linear-gradient(120deg, rgb(255, 255, 255), #ffffff20,  rgba(206, 205, 205, 0.3), rgb(255, 255, 255)) !important;
+}
+
+input:active{
+    background: linear-gradient(120deg, rgb(255, 255, 255), #ffffff20,  rgba(206, 205, 205, 0.3), rgb(255, 255, 255)) !important;
+}
+
+#city{
+    font-family: 'DM Sans';
+    font-size: 13px;
+    text-align: left;
 }
 
 button {
-    background: #007BFF;
-    color: #fff;
-    cursor: pointer;
+    position: fixed;
+    top: 88px;
+    margin: 0 0 0 5px;
+    background: linear-gradient(120deg, rgb(255, 255, 255), #ffffff20, rgb(255, 255, 255));
+    border-radius: 12px;
+    padding: 5px;
+    border: none;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 6px 6px 8px 0px rgba(156, 153, 159, 0.5);   
+    transition: transform 0.2s ease;
 }
 
-button:hover {
-    background: #0056b3;
+.search-icon{
+    width: 30px;
 }
 
 #forecast {
@@ -40,23 +74,28 @@ button:hover {
 #forecast-container {
     display: flex;
     justify-content: space-between;
-    gap: 10px;
+    gap: 25px;
+    margin-top: 40px;
 }
 
 .forecast-day {
-    background: #e0e0e0;
+    background: linear-gradient(120deg, rgb(255, 255, 255),  #ffffff20, #ffffff20,  #ffffff20, rgb(255, 255, 255));
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 6px 6px 10px 0px rgba(156, 153, 159, 0.5);   
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 12px;
     text-align: center;
-    width: 100px;
-}
-
-.forecast-day h5 {
-    margin: 0;
+    width: 130px;
+    height: 200px;
 }
 
 .forecast-day p {
     margin: 5px 0;
+}
+
+.current-weather{
+    width: 70px;
 }
 
 
